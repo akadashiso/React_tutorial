@@ -3,39 +3,30 @@ import ReactDom from 'react-dom'
 
 // CSS
 import './index.css';
+//  setup vars
+const firstBook = {
+  img: 'https://images-na.ssl-images-amazon.com/images/I/91p5b0UgbKL._AC_UL200_SR200,200_.jpg',
+  title: 'A Practical Guide to Personal Freedom',
+  author: 'Don Miguel Ruiz'
+}
 
 function BookList() {
   return (
-  <section className="booklist">
-    <Book />
-    <Book />
-    <Book />
-    <Book />
-    <Book />
-    <Book />
-    <Book />
-  </section>
+    <section className="booklist">
+      <Book img={firstBook.img} title={firstBook.title} author={firstBook.author} />
+      <Book title='random title' number={22} />
+    </section>
   );
 }
-
-const Book = () =>{
+const Book = (props) => {
   return (
-  <article className='book'>
-    <Image></Image>
-    <Title />
-    <Author />
-  </article>
+    <article className='book'>
+      <img src={props.img }alt='' />
+      <h1>{props.title}</h1>
+      <h4>{props.author}</h4>
+    </article>
   );
 };
-const Image = () => (
-<img
- src="https://images-na.ssl-images-amazon.com/images/I/91p5b0UgbKL._AC_UL200_SR200,200_.jpg" 
- alt=""
- />
-);
-
-const Title = () => <h1>The Four Agreements: A Practical Guide to Personal Freedom</h1>
-const Author = () => <h4>Don Miguel Ruiz</h4>
 
 ReactDom.render(<BookList />, document.getElementById('root')
 );
